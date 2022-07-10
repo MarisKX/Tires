@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # Custome made apps
     'home',
     'products',
+    'invoices',
 ]
 
 MIDDLEWARE = [
