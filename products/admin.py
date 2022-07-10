@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from .models import Category, Cars, Manufacturer, Product, Images
+from .models import Category, Cars, Manufacturer, Product, Images, ExtraCosts
 
 # Register your models here.
 
@@ -36,8 +36,34 @@ class ManufacturerAdmin(admin.ModelAdmin):
     ordering = ('display_name',)
 
 
+class ImagesAdmin(admin.TabularInline):
+    model = Images
+    list_display = (
+        'product'
+    )
+    readonly_fields = (
+    )
+
+
+class ExtraCostsAdmin(admin.TabularInline):
+    model = ExtraCosts
+    list_display = (
+        'product',
+        'description',
+        'amount',
+    )
+    readonly_fields = (
+    )
+
+
 class ProductAdmin(admin.ModelAdmin):
-    readonly_fields = ('code', )
+    inlines = (ImagesAdmin, ExtraCostsAdmin, )
+    readonly_fields = (
+        'code',
+        'full_size',
+        'full_size_display',
+        'bolt_pattern',
+        )
     list_display = (
         'category',
         'code',
@@ -45,8 +71,15 @@ class ProductAdmin(admin.ModelAdmin):
         'tires',
         'season',
         'full_size_display',
+        'width',
+        'height',
+        'diameter',
         'rims',
         'bolt_pattern',
+        'offset',
+        'centre_bore',
+        'fb',
+        'mp',
         'full_costs',
         'price',
     )
