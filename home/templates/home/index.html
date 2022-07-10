@@ -3,31 +3,58 @@
 
 {% block content %}
 
-    {% for product in products %}
-        <h4>{{ product.category.display_name }}</h4>
-        <h3>{{ product.name }}</h3>
-        <h4>{{ product.full_size_display }}</h4>
-        <h5>{{ product.bolt_pattern }}</h5>
-        <h4>{{ product.price }} Eur</h4>
-    {% endfor %}
-    <div class="row">
-        <div class="col-md-1 d-sm-none d-md-block">
-        </div>
-        <div class="col-12 col-md-11">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                {% for product in products %}
-                <div class="col">
-                <div class="card">
-                    <img src="{{ product.image }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <main class="main-container">
+        <div class="row">
+            <div class="col-md-1 d-sm-none d-md-block">
+                <i class="fa-duotone fa-arrow-right-from-line left-menu-icon"></i>
+            </div>
+            <div class="col-12 col-md-11">
+
+                <i class="fa-solid fa-grid-2 display-menu-icon"></i>
+                <i class="fa-solid fa-list display-menu-icon"></i>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-6 g-4">
+                    {% for product in products %}
+                    <div class="col">
+                        <div class="card">
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ product.name }}</h3>
+                                <hr>
+                                <h4>Tires:</h4>
+                                {% if product.tires %}
+                                    <p class="card-text">{{ product.full_size_display }}</p>
+                                    <p class="card-text">{{ product.get_season_display }}</p>
+                                    <p class="card-text">{{ product.manufacturer.display_name }}</p>
+                                    {% if product.dot != 0 %}    
+                                        <p class="card-text">{{ product.dot }}</p>
+                                    {% else %}
+                                        <p class="card-text">-</p>
+                                    {% endif %}
+                                {% else %}
+                                    <p class="card-text">-</p>
+                                {% endif %}
+                                <hr>
+                                <h4>Rims:</h4>
+                                {% if product.rims %}
+                                    <p class="card-text">{{ product.bolt_pattern }}</p>
+                                    <p class="card-text">{{ product.offset }}</p>
+                                    <p class="card-text">{{ product.centre_bore }}</p>
+                                    {% if product.oe_rims %}    
+                                        <p class="card-text">{{ product.oe_number }}</p>
+                                        <p class="card-text">{{ product.rim_manufacturer.display_name }}</p>
+                                    {% endif %}
+                                {% else %}
+                                    <p class="card-text">-</p>
+                                {% endif %}
+                                <h4><i class="fa-solid fa-euro-sign"></i> {{ product.price }}</h4>
+                            </div>
+                        </div>
                     </div>
+                    {% endfor %}
                 </div>
-                </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
+    </main>
 
 {% endblock %}

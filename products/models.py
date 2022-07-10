@@ -114,17 +114,17 @@ class Product(models.Model):
 
     rims = models.BooleanField(default=True)
 
-    rim_diameter = models.IntegerField(default='00', validators=[MaxValueValidator(26),MinValueValidator(12)])
-    rim_width = models.CharField(max_length=4, default='0.0J')
+    rim_diameter = models.IntegerField(default='00', validators=[MaxValueValidator(26),MinValueValidator(12)], blank=True, null=True)
+    rim_width = models.CharField(max_length=4, default='0.0J', blank=True, null=True)
 
     oe_rims = models.BooleanField(default=False)
-    oe_number = models.CharField(max_length=50, blank=True)
+    oe_number = models.CharField(max_length=50, blank=True, null=True)
     rim_manufacturer = models.ForeignKey('Cars', null=True, blank=True, on_delete=models.SET_NULL)
 
-    stud_count = models.IntegerField(default='0', validators=[MaxValueValidator(6),MinValueValidator(3)])
-    bolt_circle = models.IntegerField(default='000', validators=[MaxValueValidator(250),MinValueValidator(98)])
+    stud_count = models.IntegerField(default='0', validators=[MaxValueValidator(6),MinValueValidator(3)], blank=True, null=True)
+    bolt_circle = models.CharField(max_length=5, default='0', blank=True, null=True)
     bolt_pattern = models.CharField(max_length=5)
-    offset = models.IntegerField(default='00', validators=[MaxValueValidator(65),MinValueValidator(-15)])
+    offset = models.IntegerField(default='00', validators=[MaxValueValidator(65),MinValueValidator(-15)], blank=True, null=True)
     centre_bore = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True, default=0.0)
 
     purchase_price = models.DecimalField(max_digits=4, decimal_places=4, blank=True, null=True, default=0.00)
@@ -158,7 +158,7 @@ class Product(models.Model):
         else:
             self.full_size = '-'
             self.full_size_display = '-'
-        self.bolt_pattern = str(self.stud_count) + 'x' + str(self.bolt_circle)
+        self.bolt_pattern = str(self.stud_count) + 'x' + self.bolt_circle
         super().save(*args, **kwargs)
 
 

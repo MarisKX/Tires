@@ -38,9 +38,9 @@
     {% block corejs %}
     <!-- Font Awesome kit -->
     <script
-      src="https://kit.fontawesome.com/bafaedfb77.js"
-      crossorigin="anonymous"
-    ></script>
+      src="https://kit.fontawesome.com/271e034d25.js"
+      crossorigin="anonymous">
+    </script>
     <!-- Bootstrap JS with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -63,8 +63,8 @@
     <title>WheelerDealer | HOME</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top bg-brown">
-
+    <header class="container-fluid fixed-top top-menu-container">
+      {% include 'includes/top-nav.html' %}
     </header>
 
     {% if messages %}

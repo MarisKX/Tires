@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+        <a href="{% url 'home' %}" class="nav-link main-logo-link"><h2 class="logo-font my-0 text-green">WheelerDealer</h2></a>
+    </div>
+    <div class="col-12 col-lg-8 my-auto py-1 py-lg-0 text-center text-lg-left">
+
+      <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+
+        <li class="list-inline-item dropdown">
+          <button class="btn btn-secondary bg-green" id="products" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="products">
+            <li><a class="dropdown-item" href="#">Add New Product</a></li>
+            <li><a class="dropdown-item" href="#">Add New Category</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">All Products</a></li>
+            <li><a class="dropdown-item" href="#">All Categories</a></li>
+            <li><hr class="dropdown-divider"></li>
+            {% for category in categories %}
+            <li><a class="dropdown-item" href="#">{{ category.display_name }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li class="list-inline-item dropdown">
+          <button class="btn btn-secondary bg-green" id="bank" data-bs-toggle="dropdown" aria-expanded="false">
+            Invoices
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="bank">
+            <li><a class="dropdown-item" href="#">New Transaction</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Current Balance</a></li>
+            <li><a class="dropdown-item" href="#">Bank Statement</a></li>
+          </ul>
+        </li>
+        <li class="list-inline-item dropdown">
+          <button class="btn btn-secondary bg-green" id="properties" data-bs-toggle="dropdown" aria-expanded="false">
+            Properties
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="properties">
+            <li><a class="dropdown-item" href="#">Show Map</a></li>
+            <li><a class="dropdown-item" href="#">Real Estate</a></li>
+            <li><a class="dropdown-item" href="#">Machines</a></li>
+            <li><a class="dropdown-item" href="#">Equipment</a></li>
+          </ul>
+        </li>
+
+      </ul>
+
+
+  </div>

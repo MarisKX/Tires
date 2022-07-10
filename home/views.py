@@ -8,9 +8,17 @@ from products.models import Category, Product
 def index(request):
     """ A view to return the index page """
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by(
+        'diameter',
+        'width',
+        'height',
+        'rim_diameter',
+        'price'
+        )
+    categories = Category.objects.all()
 
     context = {
-        'products': products
+        'products': products,
+        'categories': categories
     }
     return render(request, 'home/index.html', context)

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    height: calc(100vh - 164px);
+    color: rgb(0, 99, 27);
+    font-family: 'Acme', sans-serif;
+
+}
+
+.main-container {
+    width: 98%;
+    margin-right: 2%;
+    margin-top: 60px;
+}
+
+.left-menu-icon {
+    font-size: 4rem;
+    margin-top: 50%;
+    margin-left: 15%;
+}
+
+.top-menu-container {
+    height: 60px;
+}
+
+.card-img-top {
+    aspect-ratio: 16/9;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: left;
+}
+
+.display-menu-icon {
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.fa-euro-sign {
+    font-size: 1.2rem;
+}
