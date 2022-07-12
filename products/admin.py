@@ -63,6 +63,9 @@ class ProductAdmin(admin.ModelAdmin):
         'full_size',
         'full_size_display',
         'bolt_pattern',
+        'purchase_price',
+        'extra_costs',
+        'full_costs',
         )
     list_display = (
         'category',
@@ -80,6 +83,8 @@ class ProductAdmin(admin.ModelAdmin):
         'centre_bore',
         'fb',
         'mp',
+        'purchase_price',
+        'extra_costs',
         'full_costs',
         'price',
     )

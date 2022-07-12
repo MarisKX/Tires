@@ -94,7 +94,7 @@ class Product(models.Model):
     tires = models.BooleanField(default=True)
 
     season_choices = [
-        ('1', 'No-tires'),
+        ('1', '-'),
         ('2', 'Summer'),
         ('3', 'Winter'),
         ('4', 'All Season'),
@@ -127,7 +127,7 @@ class Product(models.Model):
     offset = models.IntegerField(default='00', validators=[MaxValueValidator(65),MinValueValidator(-15)], blank=True, null=True)
     centre_bore = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True, default=0.0)
 
-    purchase_price = models.DecimalField(max_digits=4, decimal_places=4, blank=True, null=True, default=0.00)
+    purchase_price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True, default=0.00)
     extra_costs = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True, default=0.00)
     full_costs = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True, default=0.00)
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
@@ -158,8 +158,13 @@ class Product(models.Model):
         else:
             self.full_size = '-'
             self.full_size_display = '-'
-        self.bolt_pattern = str(self.stud_count) + 'x' + self.bolt_circle
+        if self.rims:
+            self.bolt_pattern = str(self.stud_count) + 'x' + self.bolt_circle
+        else:
+            self.bolt_pattern = '-'
+            self.bolt_circle = '-'
         super().save(*args, **kwargs)
+
 
 
 class Images(models.Model):
