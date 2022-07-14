@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 class Suplier(models.Model):
     class Meta:
-        verbose_name_plural = 'Suplier'
+        verbose_name_plural = 'Supliers'
 
     name = models.CharField(max_length=254, blank=True, null=True)
     full_name = models.CharField(max_length=254, blank=True)

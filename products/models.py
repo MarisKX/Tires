@@ -163,6 +163,7 @@ class Product(models.Model):
         else:
             self.bolt_pattern = '-'
             self.bolt_circle = '-'
+        self.full_costs = self.purchase_price + self.extra_costs
         super().save(*args, **kwargs)
 
 
